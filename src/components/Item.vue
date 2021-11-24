@@ -23,7 +23,7 @@ export default {
         display: flex;
         justify-content: space-around;
         height: 7%;
-        width: 100%;
+        width: 95%;
         background-color: #666;
         margin-bottom: .3em;
         border-radius: 3px;

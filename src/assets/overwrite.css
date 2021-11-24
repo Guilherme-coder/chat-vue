@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+* {
+    font-family: 'Ubuntu Mono', monospace;
+}
+
 body {
     margin: 0;
 }
