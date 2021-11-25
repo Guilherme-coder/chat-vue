@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
     .label {
-        width: 100%;
+        width: 60%;
         height: 10%;
         display: flex;
         align-items: center;

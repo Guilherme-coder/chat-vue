@@ -3,7 +3,7 @@ import App from './App.vue'
 
 import VueRouter from 'vue-router'
 import { routes } from './routes'
-import vuex from './store'
+import store from './store'
 
 
 import './assets/overwrite.css'
@@ -17,5 +17,5 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
   router,
-  vuex
+  store
 }).$mount('#app')
