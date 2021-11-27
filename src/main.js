@@ -12,6 +12,15 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({ routes })
 
+let isAuthenticated = false
+router.beforeEach((to, from, next) => {
+  if(store.getters.getUserToken != null) isAuthenticated = true
+  else isAuthenticated = false
+
+  if (to.name !== 'login' && !isAuthenticated) next({ name: 'login' })
+  else next()
+})
+
 Vue.config.productionTip = false
 
 new Vue({
