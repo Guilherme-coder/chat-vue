@@ -8,15 +8,18 @@
             :binary="'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'"
             :name="'Chat'"
         />
+        <message-box/>
     </div>
 </template>
 
 <script>
 import ContactLabel from './ContactLabel.vue'
+import MessageBox from './MessageBox.vue'
 import { mapGetters } from 'vuex'
 export default {
     components: {
-        'contact-label': ContactLabel
+        'contact-label': ContactLabel,
+        'message-box': MessageBox
     },
     computed: {
         ...mapGetters([

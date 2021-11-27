@@ -44,7 +44,7 @@ export default {
     .side_bar {
         width: 25%;
         height: 100%;
-        border-radius: 10px 4px 4px 10px;
+        border-radius: 10px 0px 0px 10px;
         background-color: #131C21;
     }
     .items {

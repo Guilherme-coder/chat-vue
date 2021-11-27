@@ -2,12 +2,12 @@
   <div class="box">
     <div class="box_login">
       <h1 class="box_login_tilte">Login</h1>
-      <form @submit="teste()" class="box_login_form">
+      <form @submit.prevent="login()" class="box_login_form">
         <label class="box_login_label" for="email">Email:</label>
-        <input class="box_login_input" type="email" id="email" ref="email" required>
+        <input class="box_login_input" type="email" id="email" v-model="user.email" required>
 
         <label class="box_login_label" for="password">Senha:</label>
-        <input class="box_login_input" type="password" id="password" ref="password" required>
+        <input class="box_login_input" type="password" id="password" v-model="user.password" required>
 
         <button class="box_login_button">Login</button>
       </form>
@@ -16,18 +16,40 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2'
+import { mapActions, mapGetters } from 'vuex'
+import UserService from '../../services/UserService'
+import axios from 'axios'
 
 export default {
-  methods: {
-    teste() {
-      Swal.fire({
-        title: 'Logado',
-        html: `<p>email: ${this.$refs.email.value}</p><p>senha: ${this.$refs.password.value}</p>`,
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      })
+  data() {
+    return {
+      user: {
+        email: null,
+        password: null
+      }
     }
+  },
+  methods: {
+    ...mapActions([
+      'doLogin',
+      'setToken'
+    ]),
+    async login() {
+      await UserService.login(this.user)
+        .then((res) => {
+          this.setToken(res.token)
+          axios.defaults.headers.common['Authorization'] = `Bearer ${res.token}`
+        })
+      await UserService.loadSession()
+      .then((res) => {
+          this.doLogin(res)
+        })
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getUserToken'
+    ])
   }
 }
 </script>
