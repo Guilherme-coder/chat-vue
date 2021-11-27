@@ -1,12 +1,18 @@
 import Vue from 'vue'
 import VueX from 'vuex'
 
+import VuexPersistence from 'vuex-persist'
+
+const vuexLocal = new VuexPersistence({
+    storage: window.localStorage
+})
+
 Vue.use(VueX)
 
 const state = {
     currentMessageInfo: null,
     user: {},
-    userToken: ''
+    userToken: null
 }
 
 const mutations = {
@@ -18,6 +24,12 @@ const mutations = {
     },
     SETTOKEN(state, payload) {
         state.userToken = payload
+    },
+    DOLOGOUT(state) {
+        state.user = {}
+    },
+    UNSETTOKEN(state) {
+        state.userToken = null
     }
 }
 
@@ -31,6 +43,10 @@ const actions = {
     },
     setToken: async ({ commit }, payload) => {
         commit('SETTOKEN', payload)
+    },
+    doLogout: async ({ commit }) => {
+        commit('DOLOGOUT')
+        commit('UNSETTOKEN')
     }
 }
 
@@ -44,5 +60,6 @@ export default new VueX.Store({
     state,
     mutations,
     actions,
-    getters
+    getters,
+    plugins: [vuexLocal.plugin]
 })

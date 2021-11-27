@@ -27,8 +27,7 @@ export default {
 
 <style scoped>
     .message_box {
-        height: 87%;
-        padding-top: 3%;
+        height: 90%;
         background-color: #12181c;
         border-radius: 0px 0px 10px 0px;
     }

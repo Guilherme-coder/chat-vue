@@ -1,5 +1,6 @@
 <template>
   <div class="side_bar">
+      <tool-bar/>
       <div class="items">
           <item v-for="item in this.items" :key="item.binary"
                 :binary="item.binary"
@@ -12,6 +13,7 @@
 
 <script>
 import Item from '../components/Item'
+import ToolBar from '../components/ToolBar.vue'
 export default {
     data() {
         return {
@@ -35,7 +37,8 @@ export default {
         }
     },
     components: {
-        'item': Item
+        'item': Item,
+        'tool-bar': ToolBar
     }
 }
 </script>

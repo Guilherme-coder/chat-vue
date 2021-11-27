@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="box_login">
-      <h1 class="box_login_tilte">Login</h1>
+      <h1 class="box_login_tilte">Faça Login, é rápido</h1>
       <form @submit.prevent="login()" class="box_login_form">
         <label class="box_login_label" for="email">Email:</label>
         <input class="box_login_input" type="email" id="email" v-model="user.email" required>
@@ -38,6 +38,9 @@ export default {
       await UserService.login(this.user)
         .then((res) => {
           this.setToken(res.token)
+            .then(() => {
+              this.$router.push({ name: 'home' })
+            })
           axios.defaults.headers.common['Authorization'] = `Bearer ${res.token}`
         })
       await UserService.loadSession()
