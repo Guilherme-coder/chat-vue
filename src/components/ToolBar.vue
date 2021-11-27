@@ -1,7 +1,7 @@
 <template>
   <div class="tools">
-      <a class="tool_item" @click="logout()">LogOut</a>
-      <a class="tool_item" @click="logout()">LogOut</a>
+      <unicon class="tool_item" @click="logout()" name="signout" fill="white"></unicon>
+
   </div>
 </template>
 
@@ -33,5 +33,6 @@ export default {
     .tool_item {
         margin-right: 1em;
         color: #fdfdfd;
+        cursor: pointer;
     }
 </style>

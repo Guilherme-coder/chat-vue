@@ -5,6 +5,10 @@ import VueRouter from 'vue-router'
 import { routes } from './routes'
 import store from './store'
 
+import Unicon from 'vue-unicons/dist/vue-unicons-vue2.umd'
+import { uniSignout } from 'vue-unicons/dist/icons'
+Unicon.add([uniSignout])
+Vue.use(Unicon)
 
 import './assets/overwrite.css'
 
